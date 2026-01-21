@@ -1,0 +1,150 @@
+
+-Check git version
+git --version
+
+-Configure Username and email
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+-initialize repository
+git init
+
+-check repository status
+git status
+
+-Add files to stating area
+git add file.txt
+git add .
+ -Commit Changes
+git commit -m “Commit message”
+
+-view commit history
+git log
+git log --oneline
+
+-View visual history 
+git log --graph --all
+
+-Who changed what to see
+git blame file.txt
+
+-Add remote repository 
+git remote add origin https://github.com/user/repo.git
+
+-Clone a repository
+git clone https://github.com/user/repo.git
+
+
+-Push code to GitHub
+git push origin main
+
+-Branch creation
+git branch feature-login
+
+-Switch branch
+git checkout feature-login
+
+-Create + switch branch
+git checkout -b feature-login
+
+-Merge branch
+git checkout main
+git merge feature-login
+Main branch adds content of feature branch
+Git detects line-by-line changes ,if conflict present-decide manually
+
+-Pull latest changes from. GitHub
+git pull origin main
+
+-delete branch
+git branch -d feature-login
+
+-View different changes
+git diff
+
+-Undo changes unstaged
+git checkout -- file.txt
+
+-remove file from staging
+git reset file.txt
+
+-undo commit 
+git reset --soft hash_commit 
+Does not delete file ,only commit deleted
+
+-undo hard commit
+Git reset —hard hash_commit
+Deletes file also with commit
+
+-tag a release
+git tag v1.0
+git push origin v1.0
+-push all tags
+git push origin —tags 
+-delete tag
+git tag -d tag_name
+git push origin —delete tag_name
+
+-jump using tag
+git checkout tag_name
+# after completion again attach the head git checkout main
+-Workflow pull request on GitHub
+git clone https://github.com/user/project.git
+cd project
+git checkout -b new-feature
+git add .
+git commit -m "Add new feature"
+git push origin new-feature
+
+-Rebase 
+git checkout -b rebase_branch
+touch rebase.txt
+get status
+git add .
+git commit -m “rebase example”
+git log —oneline
+#rebase_branch above the origin/main branch
+
+git checkout main
+git rebase rebase_branch
+#Head->master,rebase_branch
+#rebase_branch topped on top of master
+# easier to read our graph tree, rewrites history, linear history
+
+
+-Merge Conflicts
+1. Same file, same line edited :- Manually edit, git add file, git commit.
+2. Same file, different lines edited :- Auto-merge, no action needed.
+3. File deleted in one branch, modified in other :- Keep or delete, git add/file or git rm, then git commit.
+4. Same file added independently :- Manually merge content, git add file, git commit.
+5. Directory vs file name conflict :- Rename one, git add ., git commit.
+6. Binary file conflict :- Choose --ours or --theirs, git add file, git commit.
+7. Submodule conflict :- Checkout correct commit in submodule, git add submodule, git commit.
+
+-rebase conflicts
+1. Same file, same line (during commit replay) :- Fix, git add file, git rebase --continue.
+2. Multiple conflicts across commits :- Resolve each commit, git add file, git rebase --continue.
+3. Commit becomes empty :- Skip commit with git rebase --skip.
+4. Delete vs modify :- Decide, git add file, git rebase --continue.
+5. Rename conflict :- Choose correct name/content, git add ., git rebase --continue.
+6. Too complex or wrong base :- Abort rebase with git rebase --abort.
+
+
+-stash
+# safe feature,save behind the scenes, used when switching branches not delete the work
+git stash
+git stash list # global all stash
+
+git stash apply
+git stash drop[ # drop latest stash 
+
+-cherrypick
+# Apply a specific commit from another branch onto your current branch.
+git checkout feature           # switch to your branch
+git log main                   # find the commit hash you want 
+git cherry-pick commit hash       # apply that commit on your branch
+
+-squash
+# Combine multiple commits into one.
+git checkout feature
+git rebase -i HEAD~3          # interactively rebase last 3 commits
