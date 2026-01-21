@@ -148,3 +148,9 @@ git cherry-pick commit hash       # apply that commit on your branch
 # Combine multiple commits into one.
 git checkout feature
 git rebase -i HEAD~3          # interactively rebase last 3 commits
+
+-Git Commands Comparison:
+Squash:-	Combines multiple commits into one, Clean up commits before merging a PR, Rewrites history
+Reset:-	Moves branch back to a previous commit	Undo commits locally, Rewrites history
+Rebase:-	Reapplies commits on top of another branch	Update branch with latest changes, Rewrites history
+Cherry-pick:-	Copies a specific commit to another branch	Apply a single fix without merging, No rewriting history (new commit created)
